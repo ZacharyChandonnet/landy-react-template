@@ -94,9 +94,16 @@ export const FooterContainer = styled("div")`
   justify-content: space-between;
   text-align: center;
   align-items: center;
+  gap: 0.75rem;
   transition: all 0.1s ease-in-out;
+  flex-wrap: wrap;
 
   a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+
     &:hover,
     &:active,
     &:focus {
@@ -108,15 +115,12 @@ export const FooterContainer = styled("div")`
 
   @media screen and (max-width: 769px) {
     width: auto;
-
-    a:not(:last-child) {
-      display: none;
-    }
+    justify-content: flex-end;
+    gap: 0.5rem;
   }
 
   div {
     cursor: pointer;
-    margin-right: 15px;
     width: 25px;
     height: 25px;
 

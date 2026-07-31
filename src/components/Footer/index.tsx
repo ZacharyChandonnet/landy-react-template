@@ -49,11 +49,15 @@ const Footer = ({ t }: { t: TFunction }) => {
           </NavLink>
 
           <FooterContainer>
-            <a href="tel:+14383662833" aria-label="phone" style={{ marginRight: 0 }}>
-              438-366-2833 - 
+            <a
+              href="tel:+14383662833"
+              aria-label="phone"
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}
+            >
+              <span>438-366-2833</span>
               <svg
-                width="25px"
-                height="25px"
+                width="20px"
+                height="20px"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
