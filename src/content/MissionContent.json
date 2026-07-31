@@ -22,5 +22,16 @@
       "content": "Coacher • Valider • Améliorer • Développer",
       "icon": "notes.svg"
     }
+    ,
+    {
+      "title": "Thématiques",
+      "content": "Encombrement insalubrité • Itinérance (rurale/urbain) • Santé mentale • Violence conjugale • Blessures de stress opérationnel",
+      "icon": "notes.svg"
+    } ,
+    {
+      "title": "Clientèles",
+      "content": "Jeunes adultes • Ainé.es • Familles ",
+      "icon": "notes.svg"
+    }
   ]
 }
