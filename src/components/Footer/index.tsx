@@ -1,24 +1,13 @@
-import { Row, Col } from "antd";
+import { Row } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
 import { SvgIcon } from "../../common/SvgIcon";
 import Container from "../../common/Container";
 
-import i18n from "i18next";
 import {
-  FooterSection,
-  Title,
   NavLink,
   Extra,
   LogoContainer,
-  Para,
-  Large,
-  Chat,
-  Empty,
   FooterContainer,
-  Language,
-  Label,
-  LanguageSwitch,
-  LanguageSwitchContainer,
 } from "./styles";
 
 interface SocialLinkProps {
@@ -27,17 +16,12 @@ interface SocialLinkProps {
 }
 
 const Footer = ({ t }: { t: TFunction }) => {
-  const handleChange = (language: string) => {
-    i18n.changeLanguage(language);
-  };
-
   const SocialLink = ({ href, src }: SocialLinkProps) => {
     return (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        key={src}
         aria-label={src}
       >
         <SvgIcon src={src} width="25px" height="25px" />
@@ -46,35 +30,33 @@ const Footer = ({ t }: { t: TFunction }) => {
   };
 
   return (
-    <>
-      
-      <Extra>
-        <Container border={true}>
-          <Row
-            justify="space-between"
-            align="middle"
-            style={{ paddingTop: "3rem" }}
-          >
-            <NavLink to="/">
-              <LogoContainer>
-                <SvgIcon
-                  src="logo.png"
-                  aria-label="homepage"
-                  width="301px"
-                  height="150px"
-                />
-              </LogoContainer>
-            </NavLink>
-            <FooterContainer>
-              <SocialLink
-                href="https://www.linkedin.com/in/caroline-gosselin-951b91416/"
-                src="linkedin.svg"
+    <Extra>
+      <Container border>
+        <Row
+          justify="space-between"
+          align="middle"
+          style={{ paddingTop: "3rem" }}
+        >
+          <NavLink to="/">
+            <LogoContainer>
+              <SvgIcon
+                src="logo.png"
+                aria-label="homepage"
+                width="301px"
+                height="150px"
               />
-            </FooterContainer>
-          </Row>
-        </Container>
-      </Extra>
-    </>
+            </LogoContainer>
+          </NavLink>
+
+          <FooterContainer>
+            <SocialLink
+              href="https://www.linkedin.com/in/caroline-gosselin-951b91416/"
+              src="linkedin.svg"
+            />
+          </FooterContainer>
+        </Row>
+      </Container>
+    </Extra>
   );
 };
 
