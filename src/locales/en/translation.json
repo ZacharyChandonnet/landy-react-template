@@ -18,11 +18,11 @@
   "Explore": "Explore",
   "Learn more": "Learn more",
   "Get started": "Get started",
-  "Submit": "Submit",
+  "Submit": "Envoyer",
   "Message" : "Message",
-  "Your Message": "Your Message",
-  "Name" : "Name",
-  "Your Name": "Your Name",
+  "Your Message": "Votre message",
+  "Name" : "Nom",
+  "Your Name": "Prénom",
   "Email" : "Email",
-  "Your Email": "Your Email"
+  "Your Email": "Votre email"
 }

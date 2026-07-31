@@ -1,15 +1,20 @@
 {
-  "title": "Light, fast & responsive",
-  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "title": "Expertise",
+  "text": "",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
+      "title": "Approche ciblée de proximité",
+      "content": "Développer des pratiques qui rejoignent les personnes en situation de vulnérabilité directement dans leur milieu en favorisant la création d'un lien de confiance, l'accès aux soins et la réduction des obstacles.",
       "icon": "notes.svg"
     },
     {
-      "title": "Why styled-components?",
-      "content": "Styled Components gives you total control over your components.",
+      "title": "Intervention mixte",
+      "content": "Allier des partenaires pour désamorcer une situation afin de diriger rapidement les personnes en situation de vulnérabilité vers les bonnes ressources, réduisant ainsi leur judiciarisation selon la situation.",
+      "icon": "notes.svg"
+    },
+     {
+      "title": "Partenariat et concertation",
+      "content": "La cocréation et le codéveloppement sont essentiels pour répondre à des problématiques sociales complexes.",
       "icon": "notes.svg"
     }
   ]

@@ -11,6 +11,7 @@ import {
   NotHidden,
   Menu,
   CustomNavLinkSmall,
+  DrawerMenu,
   Label,
   Outline,
   Span,
@@ -34,13 +35,13 @@ const Header = ({ t }: { t: TFunction }) => {
     return (
       <>
         <CustomNavLinkSmall onClick={() => scrollTo("about")}>
-          <Span>{t("About")}</Span>
+          <Span>{t("Expertise")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <Span>{t("Mission")}</Span>
+          <Span>{t("Offre de services")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("product")}>
-          <Span>{t("Product")}</Span>
+          <Span>{t("Objectifs")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall
           style={{ width: "180px" }}
@@ -59,7 +60,7 @@ const Header = ({ t }: { t: TFunction }) => {
       <Container>
         <Row justify="space-between">
           <LogoContainer to="/" aria-label="homepage">
-            <SvgIcon src="logo.svg" width="101px" height="64px" />
+            <SvgIcon src="logo.png" width="300px" height="150px" />
           </LogoContainer>
           <NotHidden>
             <MenuItem />
@@ -71,9 +72,9 @@ const Header = ({ t }: { t: TFunction }) => {
         <Drawer closable={false} open={visible} onClose={toggleButton}>
           <Col style={{ marginBottom: "2.5rem" }}>
             <Label onClick={toggleButton}>
-              <Col span={12}>
+              {/* <Col span={12}>
                 <Menu>Menu</Menu>
-              </Col>
+              </Col> */}
               <Col span={12}>
                 <Outline />
               </Col>

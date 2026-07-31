@@ -1,13 +1,14 @@
 {
-  "title": "Landing page template for developers & startups",
-  "text": "Beautifully designed templates using React.js, ant design and styled-components! Save weeks of time and build your landing page in minutes.",
+  "title": "CONFORMACTION",
+  "text": " Pour tout organisme qui souhaite améliorer ou mettre en place des pratiques efficientes, donner des outils et des moyens à ses employés.es afin d'améliorer la qualité de leur travail, augmenter le sentiment de confiance et préserver la santé mentale de ses équipes. Service en présentiel à travers la province, virtuel ou hybride.",
   "button": [
     {
-      "title": "Explore"
+      "title": "Mon expertise"
     },
     {
-      "title": "Learn more",
-      "color": "#fff"
+      "title": "En savoir plus",
+      "color": "#fff",
+      "target": "middleblock"
     }
   ]
 }

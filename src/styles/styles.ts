@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export const Styles = createGlobalStyle`
+    :root {
+        --primary: #0D3A5C;
+        --secondary: #F17522;
+        --bg: #fff;
+    }
 
     @font-face {
         font-family: "Motiva Sans Light";
@@ -27,12 +32,12 @@ export const Styles = createGlobalStyle`
         padding:0;
         border: 0;
         outline: 0;
-        background: #fff;
+        background: var(--bg);
         overflow-x: hidden;
     }
 
     a:hover {
-        color: #18216d;
+        color: var(--primary);
     }
 
     input,
@@ -47,7 +52,7 @@ export const Styles = createGlobalStyle`
 
         :focus-within {
             background: none;
-            box-shadow: #2e186a 0px 0px 0px 1px;
+            box-shadow: var(--primary) 0px 0px 0px 1px;
         }
     }
 
@@ -58,7 +63,7 @@ export const Styles = createGlobalStyle`
     h5,
     h6 {
         font-family: 'Motiva Sans Bold', serif;
-        color: #18216d;
+        color: var(--primary);
         font-size: 56px;
         line-height: 1.18;
 
@@ -72,7 +77,7 @@ export const Styles = createGlobalStyle`
     }
 
     p {
-        color: #18216d;
+        color: var(--primary);
         font-size: 21px;        
         line-height: 1.41;
     }
@@ -84,10 +89,10 @@ export const Styles = createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #2E186A;
+        color: var(--primary);
 
         :hover {
-            color: #2e186a;
+            color: var(--secondary);
         }
     }
     

@@ -12,6 +12,10 @@ export const ContentSection = styled("section")`
 
 export const Content = styled("p")`
   margin: 1.5rem 0 2rem 0;
+  white-space: pre-line;
+  font-size: 16px;
+  color: var(--primary);
+  line-height: 1.41;
 `;
 
 export const StyledRow = styled(Row)`
@@ -35,16 +39,16 @@ export const ServiceWrapper = styled("div")`
 `;
 
 export const MinTitle = styled("h6")`
-  font-size: 15px;
-  line-height: 1rem;
+  font-size: 20px;
+  line-height: 1.5rem;
   padding: 0.5rem 0;
   text-transform: uppercase;
-  color: #000;
+  color: var(--primary);
   font-family: "Motiva Sans Light", sans-serif;
 `;
 
 export const MinPara = styled("p")`
-  font-size: 13px;
+  font-size: 14px;
 `;
 
 export const ButtonWrapper = styled("div")`

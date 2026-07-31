@@ -33,6 +33,20 @@ const ContentBlock = ({
     });
   };
 
+  const renderTitle = (value: string) => {
+    const parts = value.split(/(services|action)/i);
+
+    return parts.map((part, index) =>
+      /^(services|action)$/i.test(part) ? (
+        <span key={`${part}-${index}`} style={{ color: "var(--secondary)" }}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <ContentSection>
       <Fade direction={direction} triggerOnce>
@@ -47,34 +61,11 @@ const ContentBlock = ({
           </Col>
           <Col lg={11} md={11} sm={11} xs={24}>
             <ContentWrapper>
-              <h6>{t(title)}</h6>
+              <h6>{renderTitle(t(title))}</h6>
               <Content>{t(content)}</Content>
-              {direction === "right" ? (
-                <ButtonWrapper>
-                  {typeof button === "object" &&
-                    button.map(
-                      (
-                        item: {
-                          color?: string;
-                          title: string;
-                        },
-                        id: number
-                      ) => {
-                        return (
-                          <Button
-                            key={id}
-                            color={item.color}
-                            onClick={() => scrollTo("about")}
-                          >
-                            {t(item.title)}
-                          </Button>
-                        );
-                      }
-                    )}
-                </ButtonWrapper>
-              ) : (
+              {section && section.length > 0 ? (
                 <ServiceWrapper>
-                  <Row justify="space-between">
+                  <Row gutter={[16, 24]} justify="space-between">
                     {typeof section === "object" &&
                       section.map(
                         (
@@ -86,7 +77,7 @@ const ContentBlock = ({
                           id: number
                         ) => {
                           return (
-                            <Col key={id} span={11}>
+                            <Col key={id} xs={24} sm={12}>
                               <SvgIcon
                                 src={item.icon}
                                 width="60px"
@@ -100,7 +91,31 @@ const ContentBlock = ({
                       )}
                   </Row>
                 </ServiceWrapper>
-              )}
+              ) : direction === "right" ? (
+                <ButtonWrapper>
+                  {typeof button === "object" &&
+                    button.map(
+                      (
+                        item: {
+                          color?: string;
+                          title: string;
+                          target?: string;
+                        },
+                        id: number
+                      ) => {
+                        return (
+                          <Button
+                            key={id}
+                            color={item.color}
+                            onClick={() => scrollTo(item.target || "about")}
+                          >
+                            {t(item.title)}
+                          </Button>
+                        );
+                      }
+                    )}
+                </ButtonWrapper>
+              ) : null}
             </ContentWrapper>
           </Col>
         </StyledRow>

@@ -9,23 +9,39 @@ interface MiddleBlockProps {
   content: string;
   button: string;
   t: TFunction;
+  id?: string;
 }
 
-const MiddleBlock = ({ title, content, button, t }: MiddleBlockProps) => {
+const MiddleBlock = ({ title, content, button, t, id }: MiddleBlockProps) => {
   const scrollTo = (id: string) => {
     const element = document.getElementById(id) as HTMLDivElement;
     element.scrollIntoView({
       behavior: "smooth",
     });
   };
+
+  const renderText = (value: string) => {
+    const parts = value.split(/(action)/i);
+
+    return parts.map((part, index) =>
+      /^(action)$/i.test(part) ? (
+        <span key={`${part}-${index}`} style={{ color: "var(--secondary)" }}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
-    <MiddleBlockSection>
+    <MiddleBlockSection id={id}>
       <Slide direction="up" triggerOnce>
         <Row justify="center" align="middle">
           <ContentWrapper>
             <Col lg={24} md={24} sm={24} xs={24}>
-              <h6>{t(title)}</h6>
-              <Content>{t(content)}</Content>
+              <h6>{renderText(t(title))}</h6>
+              <Content>{renderText(t(content))}</Content>
               {button && (
                 <Button name="submit" onClick={() => scrollTo("mission")}>
                   {t(button)}

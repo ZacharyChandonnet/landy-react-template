@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import { Row, Col } from "antd";
 import { withTranslation } from "react-i18next";
 import { Slide } from "react-awesome-reveal";
 import { ContactProps, ValidationTypeProps } from "./types";
-import { useForm } from "../../common/utils/useForm";
+import { useForm as useFormSpree } from "@formspree/react";
 import validate from "../../common/utils/validationRules";
 import { Button } from "../../common/Button";
 import Block from "../Block";
@@ -11,12 +12,59 @@ import TextArea from "../../common/TextArea";
 import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
 
 const Contact = ({ title, content, id, t }: ContactProps) => {
-  const { values, errors, handleChange, handleSubmit } = useForm(validate);
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>(
+    {}
+  );
+
+  const [state, formspreeSubmit] = useFormSpree("xvzeqdeg");
 
   const ValidationType = ({ type }: ValidationTypeProps) => {
     const ErrorMessage = errors[type as keyof typeof errors];
     return <Span>{ErrorMessage}</Span>;
   };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name } = event.target;
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const getVal = (key: string) => {
+      return (
+        (formData.get(key) as string) ||
+        (formData.get(key.charAt(0).toUpperCase() + key.slice(1)) as string) ||
+        ""
+      );
+    };
+
+    const values = {
+      name: getVal("name"),
+      email: getVal("email"),
+      message: getVal("message"),
+    };
+
+    const validationErrors = validate(values);
+    setErrors(validationErrors as any);
+
+    if (Object.keys(validationErrors).length === 0) {
+      await formspreeSubmit(event as any);
+    }
+  };
+
+  if (state.succeeded) {
+    return (
+      <ContactContainer id={id}>
+        <Row justify="center">
+          <Col>
+            <p>Message envoyé, au plaisir de vous répondre sous peu.</p>
+          </Col>
+        </Row>
+      </ContactContainer>
+    );
+  }
 
   return (
     <ContactContainer id={id}>
@@ -28,13 +76,12 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
         </Col>
         <Col lg={12} md={12} sm={24} xs={24}>
           <Slide direction="right" triggerOnce>
-            <FormGroup autoComplete="off" onSubmit={handleSubmit}>
+            <FormGroup autoComplete="off" onSubmit={onSubmit}>
               <Col span={24}>
                 <Input
                   type="text"
-                  name="name"
+                  name="Name"
                   placeholder="Your Name"
-                  value={values.name || ""}
                   onChange={handleChange}
                 />
                 <ValidationType type="name" />
@@ -42,9 +89,8 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
               <Col span={24}>
                 <Input
                   type="text"
-                  name="email"
+                  name="Email"
                   placeholder="Your Email"
-                  value={values.email || ""}
                   onChange={handleChange}
                 />
                 <ValidationType type="email" />
@@ -52,8 +98,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
               <Col span={24}>
                 <TextArea
                   placeholder="Your Message"
-                  value={values.message || ""}
-                  name="message"
+                  name="Message"
                   onChange={handleChange}
                 />
                 <ValidationType type="message" />
