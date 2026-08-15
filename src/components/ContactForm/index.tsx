@@ -9,7 +9,17 @@ import { Button } from "../../common/Button";
 import Block from "../Block";
 import Input from "../../common/Input";
 import TextArea from "../../common/TextArea";
-import { ContactContainer, FormGroup, Span, ButtonContainer } from "./styles";
+import {
+  ContactContainer,
+  FormGroup,
+  Span,
+  ButtonContainer,
+  FullWidthBanner,
+  BannerContent,
+  BannerList,
+  BannerTitle,
+  HighlightedWord,
+} from "./styles";
 
 const Contact = ({ title, content, id, t }: ContactProps) => {
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>(
@@ -68,6 +78,19 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
 
   return (
     <ContactContainer id={id}>
+      <FullWidthBanner>
+        <BannerContent>
+          <BannerTitle>Organismes <HighlightedWord>ciblés</HighlightedWord></BannerTitle>
+          <BannerList>
+            <li>Municipalité (bibliothèque, urbanisme, réception)</li>
+            <li>Service de police</li>
+            <li>Service sécurité et incendie</li>
+            <li>Santé Québec</li>
+            <li>Milieu scolaire secondaire</li>
+            <li>Cégeps et universités</li>
+          </BannerList>
+        </BannerContent>
+      </FullWidthBanner>
       <Row justify="space-between" align="middle">
         <Col lg={12} md={11} sm={24} xs={24}>
           <Slide direction="left" triggerOnce>
