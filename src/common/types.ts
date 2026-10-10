@@ -7,6 +7,7 @@ export interface ContainerProps {
 export interface ButtonProps {
   color?: string;
   name?: string;
+  className?: string;
   children: React.ReactNode;
   onClick?: () => void;
 }

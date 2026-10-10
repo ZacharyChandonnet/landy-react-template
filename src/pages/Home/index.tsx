@@ -43,6 +43,12 @@ const Home = () => {
         title={MissionContent.title}
         content={MissionContent.text}
         section={MissionContent.section}
+        button={[
+          {
+            title: "En savoir plus",
+            url: `${process.env.PUBLIC_URL}/img/svg/Offre%20de%20services.pdf`,
+          },
+        ]}
         icon="product-launch.svg"
         id="mission"
       />

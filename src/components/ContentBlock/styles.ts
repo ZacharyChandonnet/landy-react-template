@@ -56,6 +56,11 @@ export const ButtonWrapper = styled("div")`
   justify-content: space-between;
   max-width: 100%;
 
+  .pdfCtaButton {
+    margin-top: 10px;
+    padding: 13px 20px;
+  }
+
   @media screen and (min-width: 1024px) {
     max-width: 80%;
   }

@@ -63,7 +63,7 @@ const ContentBlock = ({
             <ContentWrapper>
               <h6>{renderTitle(t(title))}</h6>
               <Content>{t(content)}</Content>
-              {section && section.length > 0 ? (
+              {section && section.length > 0 && (
                 <ServiceWrapper>
                   <Row gutter={[16, 24]} justify="space-between">
                     {typeof section === "object" &&
@@ -91,19 +91,22 @@ const ContentBlock = ({
                       )}
                   </Row>
                 </ServiceWrapper>
-              ) : direction === "right" ? (
+              )}
+              {direction === "right" && button && button.length > 0 && (
                 <ButtonWrapper>
-                  {typeof button === "object" &&
-                    button.map(
-                      (
-                        item: {
-                          color?: string;
-                          title: string;
-                          target?: string;
-                        },
-                        id: number
-                      ) => {
-                        return (
+                  {button.map((item, id) =>
+                    item.url ? (
+                      <a
+                        key={id}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button color={item.color} className="pdfCtaButton">
+                          {t(item.title)}
+                        </Button>
+                      </a>
+                    ) : (
                           <Button
                             key={id}
                             color={item.color}
@@ -111,11 +114,10 @@ const ContentBlock = ({
                           >
                             {t(item.title)}
                           </Button>
-                        );
-                      }
-                    )}
+                    )
+                  )}
                 </ButtonWrapper>
-              ) : null}
+              )}
             </ContentWrapper>
           </Col>
         </StyledRow>
