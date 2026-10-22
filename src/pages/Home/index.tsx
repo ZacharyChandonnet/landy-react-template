@@ -21,7 +21,7 @@ const Home = () => {
         title={IntroContent.title}
         content={IntroContent.text}
         button={IntroContent.button}
-        icon="STCO.png"
+        icon="Portraits-Caroline-Oct2026-2216-HR.jpg"
         id="intro"
       />
       <MiddleBlock
@@ -35,7 +35,7 @@ const Home = () => {
         title={AboutContent.title}
         content={AboutContent.text}
         section={AboutContent.section}
-        icon="waving.svg"
+        icon="STCO.png"
         id="about"
       />
       <ContentBlock
@@ -49,14 +49,14 @@ const Home = () => {
             url: `${process.env.PUBLIC_URL}/img/svg/Offre%20de%20services.pdf`,
           },
         ]}
-        icon="product-launch.svg"
+        icon="graphs.svg"
         id="mission"
       />
       <ContentBlock
         direction="left"
         title={ProductContent.title}
         content={ProductContent.text}
-        icon="graphs.svg"
+        icon="Portraits-Caroline-Oct2026-2309-HR.jpg"
         id="product"
       />
       <Contact
