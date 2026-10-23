@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { SERVICES, THEMES, CLIENTS, PILLARS, BUILD, ORGS } from './src/data.js'
 
 const SITE = 'https://conformaction.com'
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 
 /* SEO : injecte dans index.html (1) les données structurées JSON-LD et (2) une version texte du contenu
    lisible sans JavaScript. Tout est généré depuis src/data.js : modifiez vos textes à un seul endroit. */
-function seo() {
+async function buildSeo() {
+  // Import dynamique : si data.js change et ne peut plus être lu par Node, le build continue sans planter
+  const { SERVICES, THEMES, CLIENTS, PILLARS, BUILD, ORGS } = await import('./src/data.js')
   const jsonld = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -46,12 +47,22 @@ function seo() {
 <h2>Soumission gratuite</h2><p>Parlons de vos besoins : soumission gratuite selon l’évaluation de vos besoins.</p>
 </main>
 </div>`
+  return { jsonld, fallback }
+}
+
+function seo() {
+  let out = null
   return {
     name: 'conformaction-seo',
-    transformIndexHtml: (html) =>
-      html
-        .replace('<!--JSONLD-->', `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>`)
-        .replace('<!--FALLBACK-->', fallback),
+    async buildStart() {
+      try { out = await buildSeo() } catch (e) { console.warn('[seo] contenu SEO non généré :', e.message) }
+    },
+    transformIndexHtml(html) {
+      if (!out) return html.replace('<!--JSONLD-->', '').replace('<!--FALLBACK-->', '')
+      return html
+        .replace('<!--JSONLD-->', `<script type="application/ld+json">${JSON.stringify(out.jsonld)}</script>`)
+        .replace('<!--FALLBACK-->', out.fallback)
+    },
   }
 }
 
