@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://conformaction.com/</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://conformaction.com/images/conformaction-intervenante-sociale-formatrice-coach-quebec.webp</image:loc>
+      <image:title>Intervenante sociale, formatrice et coach — Conformaction</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://conformaction.com/images/conformaction-conferences-formations-intervention-proximite.webp</image:loc>
+      <image:title>Conférences et formations en intervention de proximité — Conformaction</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://conformaction.com/images/conformaction-animation-formation-atelier-organismes-quebec.webp</image:loc>
+      <image:title>Atelier de formation pour organismes au Québec — Conformaction</image:title>
+    </image:image>
+  </url>
+</urlset>
